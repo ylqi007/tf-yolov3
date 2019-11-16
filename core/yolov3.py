@@ -245,13 +245,13 @@ class YOLOV3(object):
                                          anchors = self.anchors[2], stride = self.strides[2])
 
         with tf.name_scope('giou_loss'):
-            giou_loss = loss_sbbox[0] + loss_mbbox[0] + loss_lbbox[0]
+            giou_loss = loss_sbbox[0] * 1 + loss_mbbox[0] * 3.45 + loss_lbbox[0] * 4.64
 
         with tf.name_scope('conf_loss'):
-            conf_loss = loss_sbbox[1] + loss_mbbox[1] + loss_lbbox[1]
+            conf_loss = loss_sbbox[1] * 1 + loss_mbbox[1] * 3.45 + loss_lbbox[1] * 4.64
 
         with tf.name_scope('prob_loss'):
-            prob_loss = loss_sbbox[2] + loss_mbbox[2] + loss_lbbox[2]
+            prob_loss = loss_sbbox[2] * 1 + loss_mbbox[2] * 3.45 + loss_lbbox[2] * 4.64
 
         return giou_loss, conf_loss, prob_loss
 
